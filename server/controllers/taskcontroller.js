@@ -12,7 +12,9 @@ class TaskController {
         }
         throw(errorMessage)
       }
-      return res.status(200).json(data)
+      else{
+        return res.status(200).json(data)
+      }
     })
     .catch(err=>{
       next(err)
@@ -23,7 +25,8 @@ class TaskController {
     let task = {
       title:req.body.title,
       category:req.body.category,
-      UserId: req.userData.id
+      UserId: req.userData.id,
+      UserEmail: req.userData.email
     }
     Task.create(task)
     .then((data)=>{
