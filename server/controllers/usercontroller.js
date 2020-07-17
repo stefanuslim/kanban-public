@@ -58,7 +58,6 @@ class UserController {
   }
 
   static login(req,res,next){
-    console.log(req.body.email)
     User.findOne({
       where:{
         email: req.body.email
@@ -81,7 +80,7 @@ class UserController {
         const errorMessage = {
           name: "ValidationError",
           message: "Password incorrect",
-          statusCode:401
+          statusCode:400
         }
         throw(errorMessage)
       }

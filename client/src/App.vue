@@ -23,7 +23,7 @@ export default {
       tasks: [],
       isLogin: false,
       isRegister: false,
-      socket: io('http://localhost:3001')
+      socket: io('https://my-kanban-board-01.herokuapp.com')
     };
   },
   methods:{

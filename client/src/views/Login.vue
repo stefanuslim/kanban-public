@@ -80,7 +80,7 @@ import GoogleSignInButton from 'vue-google-signin-button-directive'
       login(){
         axios({
           method:'post',
-          url:'http://localhost:3001/login',
+          url:'https://my-kanban-board-01.herokuapp.com/login',
           data:{
             email: this.emaillogin,
             password: this.passwordlogin
