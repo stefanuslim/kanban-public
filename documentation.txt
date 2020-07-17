@@ -4,6 +4,15 @@ This server has:
 - RESTful endpoint for asset's CRUD Operation
 - JSON Formatted response
 
+List Endpoints
+- POST /register
+- POST /login
+- POST /googleSignIn
+- GET /tasks
+- POST /tasks
+- GET /tasks/:id
+- PUT /tasks/:id
+- DELETE /tasks/:id
 
 ## RESTful Endpoints
 
@@ -41,9 +50,9 @@ This server has:
     {
       "token": "<access_token_JWT>"
     }
-  * Response(400)
+  * Response(401)
     {
-      "message" : "<ValidationError>"
+      "message" : "<AuthValidationError>"
     }
   * Response(404)
     {

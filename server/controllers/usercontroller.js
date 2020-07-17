@@ -80,7 +80,7 @@ class UserController {
         const errorMessage = {
           name: "ValidationError",
           message: "Password incorrect",
-          statusCode:400
+          statusCode:401
         }
         throw(errorMessage)
       }
