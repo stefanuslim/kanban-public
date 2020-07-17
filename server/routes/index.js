@@ -6,6 +6,8 @@ routes.post("/login",UserController.login)
 
 routes.post("/register",UserController.register)
 
+routes.post("/googleSignIn",UserController.googleSignIn)
+
 routes.use(taskRoutes)
 
 
