@@ -83,7 +83,7 @@
       move(category){
         axios({
           method: 'put',
-          url: `http://localhost:3002/tasks/${this.task.id}`,
+          url: `https://my-kanban-board-01.herokuapp.com/tasks/${this.task.id}`,
           headers:{token: localStorage.accessToken},
           data:{
             title: this.task.title,
@@ -95,6 +95,7 @@
           swal("Success!", "You have move your Task!", "success");
         })
         .catch((err)=>{
+          console.log(err)
           swal("Failed!", "You're not authorized to move this task!", "error");
         })
       },
@@ -104,7 +105,7 @@
       submitDelete(){
         axios({
           method:'delete',
-          url:`http://localhost:3002/tasks/${this.task.id}`,
+          url:`https://my-kanban-board-01.herokuapp.com/tasks/${this.task.id}`,
           headers:{token: localStorage.accessToken}
         })
         .then((results)=>{
@@ -118,7 +119,7 @@
       submitEditTask(){
         axios({
           method:'put',
-          url:`http://localhost:3002/tasks/${this.task.id}`,
+          url:`https://my-kanban-board-01.herokuapp.com/tasks/${this.task.id}`,
           data:{
             title: this.titleToEdit,
             category: this.task.category

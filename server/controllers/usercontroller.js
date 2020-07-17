@@ -58,6 +58,7 @@ class UserController {
   }
 
   static login(req,res,next){
+    console.log(req.body.email)
     User.findOne({
       where:{
         email: req.body.email

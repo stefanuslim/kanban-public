@@ -60,15 +60,15 @@ import GoogleSignInButton from 'vue-google-signin-button-directive'
       OnGoogleAuthSuccess (idToken) {
         axios({
           method:'post',
-          url:'http://localhost:3002/googleSignIn',
+          url:'https://my-kanban-board-01.herokuapp.com/googleSignIn',
           data:{
             id_token: idToken
           }
         })
         .then((results)=>{
-          this.$emit("toParentLogin", results.data.token)
           this.emaillogin = ""
           this.passwordlogin = ""
+          this.$emit("toParentLogin", results.data.token)
         })
         .catch((err)=>{
           swal("Failed!", "Please Try Again", "error");
@@ -80,16 +80,16 @@ import GoogleSignInButton from 'vue-google-signin-button-directive'
       login(){
         axios({
           method:'post',
-          url:'http://localhost:3002/login',
+          url:'http://localhost:3001/login',
           data:{
             email: this.emaillogin,
             password: this.passwordlogin
           }
         })
         .then((results)=>{
-          this.$emit("toParentLogin", results.data.accessToken)
           this.emaillogin = ""
           this.passwordlogin = ""
+          this.$emit("toParentLogin", results.data.accessToken)
         })
         .catch((err)=>{
           swal("Failed!", "Please Try Again", "error");
@@ -98,16 +98,16 @@ import GoogleSignInButton from 'vue-google-signin-button-directive'
       register(){
         axios({
           method:'post',
-          url:'http://localhost:3002/register',
+          url:'https://my-kanban-board-01.herokuapp.com/register',
           data:{
             email: this.emailregister,
             password: this.passwordregister
           }
         })
         .then((results)=>{
-          this.$emit("toParentRegister")
           this.emailregister =""
           this.passwordregister = ""
+          this.$emit("toParentRegister")
           swal("Success!", "You have successfully register your personal information!", "success")
         })
         .catch((err)=>{

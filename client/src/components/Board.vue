@@ -60,7 +60,7 @@
       submitAddTask(){
         axios({
           method:'post',
-          url:'http://localhost:3002/tasks',
+          url:'https://my-kanban-board-01.herokuapp.com/tasks',
           data:{
             title: this.titleToAdd,
             category: this.category

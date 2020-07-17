@@ -11,6 +11,7 @@ import axios from "axios"
 import Main from "./views/Main.vue"
 import Navbar from "./components/Navbar.vue"
 import Login from "./views/Login.vue"
+import io from 'socket.io-client'
 export default {
   components:{
     Main,
@@ -21,12 +22,14 @@ export default {
     return {
       tasks: [],
       isLogin: false,
-      isRegister: false
+      isRegister: false,
+      socket: io('http://localhost:3001')
     };
   },
   methods:{
     emitLogin(accessToken){
       this.isLogin = true,
+      console.log(accessToken)
       localStorage.accessToken = accessToken
       this.getTasks()
     },
@@ -52,11 +55,12 @@ export default {
     getTasks(){
       axios({
         method: 'get',
-        url: 'http://localhost:3002/tasks',
+        url: 'https://my-kanban-board-01.herokuapp.com/tasks',
         headers:{token: localStorage.accessToken}
       })
       .then(results=>{
         this.tasks = results.data
+        this.socket.emit("newAddTask",this.tasks)
       })
       .catch((err)=>{
         console.log(err)
@@ -71,6 +75,11 @@ export default {
     else{
       this.isLogin = false
     }
+  },
+  mounted(){
+    this.socket.on("newAddTask",(newAddTask)=>{
+      this.tasks = newAddTask
+    })
   },
 };
 </script>
